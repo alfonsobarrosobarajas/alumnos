@@ -1,10 +1,14 @@
 package com.utch.alumno.controller;
 
 
+import com.utch.alumno.dto.AlumnoRequestDto;
+import com.utch.alumno.service.AlumnoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AlumnoController {
 
 
-    @GetMapping
-    public ResponseEntity<Object> getAlumno(){
+    @Autowired
+    private AlumnoService alumnoService;
 
-        return new ResponseEntity<>("Soy alumno", HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<Object> postAlumno(@RequestBody AlumnoRequestDto alumnoRequestDto) {
+
+        return new ResponseEntity<>(alumnoService.save(alumnoRequestDto), HttpStatus.OK);
 
     }
 
