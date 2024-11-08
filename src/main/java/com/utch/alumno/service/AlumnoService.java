@@ -8,6 +8,8 @@ import com.utch.alumno.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AlumnoService {
 
@@ -19,6 +21,15 @@ public class AlumnoService {
         return entityToDto(alumnoRepository.save(dtoToEntity(alumnoRequestDto)));
 
     }
+
+    public List<AlumnoResponseDto> findAll(){
+        return alumnoRepository.findAll().stream().map(this::entityToDto).toList();
+    }
+
+    public AlumnoResponseDto findById(Integer id){
+        return alumnoRepository.findById(id).map(this::entityToDto).orElseThrow();
+    }
+
 
     private AlumnoEntity dtoToEntity(AlumnoRequestDto alumnoRequestDto) {
         return AlumnoEntity.builder()

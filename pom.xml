@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.utch</groupId>
-	<artifactId>alumno</artifactId>
+	<artifactId>base-alumno</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>alumno</name>
-	<description>Demo project for Alumnos</description>
+	<description>Base microservice Alumnos</description>
 	<url/>
 	<licenses>
 		<license/>
